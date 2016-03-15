@@ -1,0 +1,25 @@
+name:                test-via-r
+version:             0.1.0.0
+homepage:            TBD
+license:             MIT
+author:              Dominic Steinitz
+maintainer:          idontgetoutmuch@gmail.com
+category:            System
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable MwcTest.dylib
+  main-is: MwcTest.hs
+  other-extensions:    ForeignFunctionInterface
+  build-depends:       base >=4.7 && <4.9,
+                       mwc-random >=0.13 && <0.14,
+                       primitive >=0.6 && <0.7,
+                       random >=1.1 && <1.2,
+                       vector >=0.11 && <0.12
+  hs-source-dirs:      src
+  build-tools:         gcc
+  default-language:    Haskell2010
+  include-dirs:        src
+  c-sources:           src/StartEnd.c
+  ghc-options:         -O2 -shared -fPIC -dynamic
+  extra-libraries:     HSrts-ghc7.10.3
